@@ -1,11 +1,15 @@
 import requests
+import os
+from dotenv import load_dotenv
 
+# 載入環境變數
+load_dotenv()
 
 def test_woocommerce_api():
-    # 設定 WooCommerce API 的網址和金鑰
+    # 設定 WooCommerce API 的網址和金鑰（從環境變數讀取）
     api_url = "https://dudushop77.com/wp-json/wc/v3/products"
-    consumer_key = "ck_13c3a730ff33adfa9744fcc7e93c7e6fad9bec87"
-    consumer_secret = "cs_1eab3ed099dd34f9f65059a3d03ad4237cf81df0"
+    consumer_key = os.environ.get('WOOCOMMERCE_CONSUMER_KEY')
+    consumer_secret = os.environ.get('WOOCOMMERCE_CONSUMER_SECRET')
 
     try:
         # 發送請求
